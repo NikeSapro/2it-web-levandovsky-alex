@@ -1,1 +1,12 @@
-# 2it-web-levandovsky-alex
+# Travis Scott - One Page Web
+
+## Popis webu
+Tento web je jednostránková prezentace o americkém rapperovi a producentovi **Travis Scottovi**.  
+Cílem stránky je představit základní informace o jeho životě, hudebním stylu a významu v hudebním průmyslu.  
+Stránka je moderní, responzivní a obsahuje jednoduché animace při scrollu.
+
+## Použité technologie
+- **HTML5** – struktura stránky, nadpisy, sekce a tlačítka  
+- **CSS3** – vzhled stránky, gradienty, fonty, zaoblené karty, animace
+- **JavaScript** – jednoduchá scroll animace sekcí  
+- **GitHub** – publikace stránky
