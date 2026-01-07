@@ -1,0 +1,585 @@
+:root {
+    --red: #ff0000;
+    --dark-red: #8a0000;
+    --black: #050505;
+    --void: #000000;
+    --off-white: #f0f0f0;
+    --grey: #333;
+    --font-main: 'Anton', sans-serif;
+    --font-goth: 'Cinzel Decorative', cursive;
+    --font-trash: 'Metal Mania', cursive;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Custom Cursor */
+html,
+body,
+a,
+button,
+.album-item {
+    cursor: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgdmlld0JveD0iMCAwIDMyIDMyIiBmaWxsPSJub25lIiBzdHJva2U9InJlZCIgc3Ryb2tlLXdpZHRoPSIzIj48cGF0aCBkPSJNMTYgMlYzME04IDEwSDI0Ii8+PC9zdmc+') 16 16, crosshair !important;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+    background: var(--void);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--red);
+}
+
+body {
+    background-color: var(--black);
+    color: var(--off-white);
+    font-family: var(--font-main);
+    overflow-x: hidden;
+}
+
+/* Scroll Progress Bar - REMOVED */
+
+/* Preloader */
+.preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--void);
+    z-index: 10000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--red);
+    font-family: var(--font-main);
+}
+
+.loader-content {
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.counter {
+    font-size: 15vw;
+    line-height: 1;
+    position: relative;
+    z-index: 2;
+}
+
+.loader-line {
+    width: 100%;
+    height: 10px;
+    background: var(--red);
+    transform: scaleX(0);
+    transform-origin: left;
+    margin-top: 1rem;
+}
+
+@keyframes noise-pulse {
+    0% {
+        opacity: 0.1;
+    }
+
+    50% {
+        opacity: 0.25;
+    }
+
+    100% {
+        opacity: 0.1;
+    }
+}
+
+@keyframes flash-invert {
+    0% {
+        filter: invert(0);
+    }
+
+    10% {
+        filter: invert(1);
+    }
+
+    20% {
+        filter: invert(0);
+    }
+
+    30% {
+        filter: invert(1);
+    }
+
+    100% {
+        filter: invert(0);
+    }
+}
+
+/* Texture Overlays */
+.noise {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIj48ZmlsdGVyIGlkPSJnoiPjxmZVR1cmJ1bGVuY2UgdHlwZT0iZnJhY3RhbE5vaXNlIiBiYXNlRnJlcXVlbmN5PSIwLjY1IiBudW1PY3RhdmVzPSIzIiBzdGl0Y2hUaWxlcz0ic3RpdGNoIi8+PC9maWx0ZXI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsdGVyPSJ1cmwoI2cpIiBvcGFjaXR5PSIwLjUiLz48L3N2Zz4=');
+    opacity: 0.15;
+    pointer-events: none;
+    z-index: 900;
+    animation: noise-pulse 0.2s infinite alternate;
+}
+
+.energy-burst {
+    animation: flash-invert 0.4s linear;
+}
+
+/* Typography & Layout */
+.giant-text {
+    font-size: 22vw;
+    line-height: 0.8;
+    text-transform: uppercase;
+    position: absolute;
+    pointer-events: none;
+    z-index: 10;
+    color: var(--off-white);
+    mix-blend-mode: exclusion;
+    letter-spacing: -1rem;
+}
+
+.editorial-hero {
+    height: 110vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: radial-gradient(circle at center, #111 0%, #000 80%);
+}
+
+.hero-img {
+    width: 45vw;
+    height: 70vh;
+    filter: contrast(1.5) grayscale(100%) brightness(0.9);
+    transition: all 0.5s ease;
+    z-index: 5;
+    border: 1px solid var(--red);
+}
+
+.hero-img:hover {
+    filter: contrast(1.3) grayscale(0%) sepia(50%) saturate(200%);
+    box-shadow: 0 0 30px var(--red);
+    border-color: var(--off-white);
+}
+
+.hero-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.op-text {
+    top: 15%;
+    left: -5%;
+    color: transparent;
+    -webkit-text-stroke: 2px var(--red);
+    font-family: var(--font-trash);
+    opacity: 0.8;
+}
+
+.sub-text {
+    position: absolute;
+    bottom: 15%;
+    right: 5%;
+    font-family: var(--font-goth);
+    font-size: 4vw;
+    color: var(--red);
+    z-index: 12;
+    text-shadow: 0 0 10px black;
+    letter-spacing: 5px;
+}
+
+.scroll-down {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: monospace;
+    font-size: 1.2rem;
+    color: var(--red);
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+
+    0%,
+    100% {
+        transform: translate(-50%, 0);
+    }
+
+    50% {
+        transform: translate(-50%, 10px);
+    }
+}
+
+/* Chaos Gallery */
+.chaos-gallery {
+    min-height: 160vh;
+    position: relative;
+    background: var(--off-white);
+    color: var(--black);
+    padding: 10vh 0;
+    overflow: hidden;
+    /* Inverted section */
+    filter: invert(1);
+}
+
+.vertical-text {
+    writing-mode: vertical-rl;
+    right: 5%;
+    top: 0;
+    font-size: 18vw;
+    color: var(--black);
+    opacity: 0.2;
+    font-family: var(--font-trash);
+}
+
+.album-item {
+    position: absolute;
+    width: 28vw;
+    transition: transform 0.2s cubic-bezier(0.1, 0.7, 1.0, 0.1);
+    border: 2px solid var(--black);
+}
+
+.album-item:hover {
+    z-index: 50;
+    transform: scale(1.1) !important;
+    box-shadow: 0 0 30px var(--red);
+    border-color: var(--off-white);
+}
+
+.album-item img {
+    width: 100%;
+    display: block;
+    filter: grayscale(100%) contrast(1.5);
+    transition: all 0.5s ease;
+}
+
+.album-item:hover img {
+    /* FORCE RED INFERNO VIBE */
+    filter: grayscale(100%) brightness(0.8) sepia(100%) hue-rotate(-50deg) saturate(600%) contrast(1.2);
+}
+
+.wlr {
+    top: 15%;
+    left: 15%;
+    z-index: 20;
+}
+
+.album-meta {
+    background: var(--red);
+    color: var(--off-white);
+    padding: 0.5rem;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    font-family: monospace;
+}
+
+.die-lit {
+    top: 50%;
+    right: 25%;
+    z-index: 21;
+}
+
+/* Marquee */
+.marquee-strip {
+    position: absolute;
+    bottom: 5%;
+    width: 120%;
+    left: -10%;
+    background: var(--black);
+    color: var(--red);
+    padding: 2rem;
+    transform: rotate(4deg);
+    font-size: 5rem;
+    white-space: nowrap;
+    overflow: hidden;
+    z-index: 30;
+    font-family: var(--font-trash);
+    border-top: 5px solid var(--red);
+    border-bottom: 5px solid var(--red);
+}
+
+/* Tour Manifest */
+.tour-manifest {
+    min-height: 100vh;
+    background: var(--black);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5rem;
+    border-top: 10px solid var(--red);
+}
+
+.section-title {
+    font-size: 12vw;
+    color: var(--off-white);
+    margin-bottom: 4rem;
+    font-family: var(--font-goth);
+    text-align: center;
+}
+
+.manifest-list {
+    list-style: none;
+    width: 100%;
+    max-width: 1000px;
+}
+
+.manifest-list li {
+    display: flex;
+    justify-content: space-between;
+    font-size: 5vw;
+    border-bottom: 2px solid var(--grey);
+    padding: 1.5rem 0;
+    color: var(--grey);
+    transition: all 0.2s;
+    cursor: pointer;
+}
+
+.manifest-list li:hover {
+    color: var(--red);
+    border-color: var(--red);
+    padding-left: 2rem;
+    background: linear-gradient(90deg, rgba(255, 0, 0, 0.1), transparent);
+}
+
+.loc {
+    font-family: var(--font-main);
+    letter-spacing: -2px;
+}
+
+.status {
+    font-family: monospace;
+    font-size: 1.5rem;
+    align-self: center;
+    color: var(--off-white);
+    background: var(--red);
+    padding: 0.2rem 0.5rem;
+}
+
+/* RGB Split / Glitch Animation (Strict RED/WHITE/BLACK) */
+@keyframes glitch-skew {
+    0% {
+        transform: skew(0deg);
+    }
+
+    20% {
+        transform: skew(-4deg);
+    }
+
+    40% {
+        transform: skew(4deg);
+    }
+
+    60% {
+        transform: skew(-2deg);
+    }
+
+    80% {
+        transform: skew(2deg);
+    }
+
+    100% {
+        transform: skew(0deg);
+    }
+}
+
+@keyframes rgb-split-anim {
+    0% {
+        text-shadow: -2px 0 var(--red), 2px 0 rgba(255, 255, 255, 0.5);
+    }
+
+    50% {
+        text-shadow: -2px 0 rgba(255, 255, 255, 0.5), 2px 0 var(--red);
+    }
+
+    100% {
+        text-shadow: -2px 0 var(--red), 2px 0 rgba(255, 255, 255, 0.5);
+    }
+}
+
+.rgb-split {
+    animation: rgb-split-anim 3s infinite alternate;
+    display: inline-block;
+}
+
+.giant-text {
+    font-size: 22vw;
+    line-height: 0.8;
+    text-transform: uppercase;
+    position: absolute;
+    pointer-events: none;
+    z-index: 10;
+    color: var(--black);
+    mix-blend-mode: difference;
+    letter-spacing: -1rem;
+    opacity: 0.9;
+    /* Subtler animation for main title */
+    animation: rgb-split-anim 2s infinite alternate;
+}
+
+/* Flashbang Overlay */
+.flash-white {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
+    z-index: 20000;
+    /* Top level */
+    pointer-events: none;
+    opacity: 0;
+}
+
+/* Chaos Scroll Physics Class (JS toggles this or applies transform) */
+.chaos-scroll {
+    will-change: transform;
+    transition: transform 0.1s linear;
+}
+
+/* Preloader (Gate System) */
+.preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+    /* Let events pass once hidden */
+}
+
+.gate {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background: var(--black);
+    z-index: 10001;
+}
+
+.gate-top {
+    top: 0;
+    border-bottom: 2px solid var(--red);
+}
+
+.gate-bottom {
+    bottom: 0;
+    border-top: 2px solid var(--red);
+}
+
+.loader-content {
+    z-index: 10002;
+    position: relative;
+    text-align: center;
+    color: var(--red);
+    mix-blend-mode: normal;
+    /* Ensure visibility */
+}
+
+.loader-content h1 {
+    font-size: 20vw;
+    animation: glitch-skew 0.3s infinite;
+    margin: 0;
+    line-height: 1;
+}
+
+.manifest-list li:hover .loc {
+    animation: glitch-skew 0.1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
+    color: var(--red);
+    text-shadow: 2px 2px white;
+}
+
+/* --- OPIUM OVERDOSE STYLES --- */
+
+/* Blood Fog Canvas */
+#fogCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    /* Behind everything */
+    opacity: 0.8;
+    pointer-events: none;
+}
+
+/* Cursor Trail Canvas - REMOVED */
+
+/* --- GHOST CURSOR (GSAP) --- */
+.cursor-dot,
+.cursor-follower {
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    z-index: 99999;
+    pointer-events: none;
+    mix-blend-mode: exclusion;
+}
+
+.cursor-dot {
+    width: 8px;
+    height: 8px;
+    background: white;
+}
+
+.cursor-follower {
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--red);
+    background: rgba(255, 0, 0, 0.1);
+    transition: width 0.3s, height 0.3s, background 0.3s;
+}
+
+/* Hover State for Cursor */
+.cursor-follower.active {
+    width: 80px;
+    height: 80px;
+    background: rgba(255, 0, 0, 0.3);
+    border-color: white;
+}
+
+/* --- KINETIC TYPOGRAPHY --- */
+@keyframes text-flow {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.kinetic-text {
+    background: linear-gradient(90deg, #ff0000, #ffffff, #ff0000);
+    background-size: 200% auto;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: text-flow 3s linear infinite;
+    -webkit-text-stroke: 0px !important;
+    /* Override stroke if needed */
+}
