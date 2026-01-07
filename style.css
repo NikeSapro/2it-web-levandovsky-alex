@@ -1,106 +1,120 @@
-/* Reset a základní styly */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Arial', sans-serif;
+    font-family: 'Montserrat', sans-serif;
 }
 
 body {
-    line-height: 1.6;
-    background-color: #0d0d0d;
+    background: #0b0b0b;
     color: #fff;
+    line-height: 1.7;
 }
 
-/* Hero sekce s gradientem */
+/* HERO */
 .hero {
     height: 100vh;
+    background: url("https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4") center/cover no-repeat;
+    position: relative;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0.8), rgba(0,0,0,0.4));
+}
+
+.hero-content {
+    position: relative;
     text-align: center;
-    background: linear-gradient(135deg, #ff4500, #ff6347, #ff7f50);
-    padding: 0 20px;
-    color: #fff;
+    z-index: 1;
 }
 
 .hero h1 {
-    font-size: 4rem;
-    margin-bottom: 0.5rem;
-    text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+    font-size: 4.5rem;
+    font-weight: 800;
+    letter-spacing: 3px;
 }
 
 .hero p {
-    font-size: 1.5rem;
-    margin-bottom: 2rem;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+    font-size: 1.4rem;
+    margin: 20px 0 40px;
+    color: #ddd;
 }
 
 .btn {
-    padding: 12px 25px;
-    background: #fff;
-    color: #ff4500;
-    text-decoration: none;
+    padding: 14px 36px;
     border-radius: 50px;
-    font-weight: bold;
-    transition: 0.3s;
+    background: linear-gradient(135deg, #ff4500, #ff7f50);
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.4s;
 }
 
 .btn:hover {
-    background: #ffe5dc;
-    transform: scale(1.05);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(255,69,0,0.5);
 }
 
-/* Sekce */
+/* GLASS CARDS */
 .card {
-    background-color: #1a1a1a;
-    padding: 60px 20px;
-    max-width: 800px;
-    margin: 40px auto;
-    border-radius: 15px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.5);
-    text-align: center;
+    max-width: 900px;
+    margin: 80px auto;
+    padding: 60px;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.6);
     opacity: 0;
-    transform: translateY(50px);
-    transition: 1s;
+    transform: translateY(60px);
+    transition: 1s ease;
 }
 
-section h2 {
+.card h2 {
     font-size: 2.5rem;
-    margin-bottom: 20px;
-    color: #ff4500;
+    margin-bottom: 25px;
+    color: #ff7f50;
 }
 
-ul {
+.card p {
+    font-size: 1.1rem;
+    color: #ddd;
+}
+
+.card ul {
     list-style: none;
-    margin-top: 10px;
 }
 
-ul li {
-    margin: 10px 0;
+.card ul li {
     font-size: 1.2rem;
+    margin: 15px 0;
 }
 
-/* Footer */
+/* REVEAL */
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* FOOTER */
 footer {
     text-align: center;
-    padding: 20px;
-    font-size: 0.9rem;
-    color: #bbb;
+    padding: 40px;
+    color: #999;
 }
 
-/* Responzivita */
+/* RESPONSIVE */
 @media(max-width:768px){
     .hero h1 {
-        font-size: 2.5rem;
+        font-size: 3rem;
     }
 
-    .hero p {
-        font-size: 1.2rem;
-    }
-
-    section h2 {
-        font-size: 2rem;
+    .card {
+        margin: 40px 20px;
+        padding: 40px 25px;
     }
 }
