@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OPIUM / KING VAMP</title>
+    <link rel="stylesheet" href="style.css?v=8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Brutalist Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Anton&family=Cinzel+Decorative:wght@900&family=Metal+Mania&display=swap"
+        rel="stylesheet">
+
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+
+<body>
+    <!-- 1. BLOOD FOG BACKGROUND -->
+    <canvas id="fogCanvas"></canvas>
+
+    <!-- 2. LIQUID DISTORTION FILTER (Removed) -->
+
+    <!-- 3. GHOST CURSOR (GSAP) -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-follower"></div>
+
+    <div class="flash-white"></div> <!-- Flashbang Element -->
+
+    <!-- Preloader (Gate System) -->
+    <div class="preloader">
+        <div class="gate gate-top"></div>
+        <div class="gate gate-bottom"></div>
+        <div class="loader-content">
+            <h1 class="counter">0%</h1>
+            <div class="loader-line"></div>
+            <p style="font-family: monospace; color: var(--red); margin-top: 1rem;">[ SYSTEM BOOT ]</p>
+        </div>
+    </div>
+
+    <div class="noise"></div>
+    <div class="vignette"></div>
+
+    <main data-scroll-container>
+        <!-- Section 1: Editorial Hero -->
+        <section class="editorial-hero">
+            <h1 class="giant-text op-text kinetic-text" data-speed="0.5">OPIUM</h1>
+            <div class="img-container hero-img" data-speed="0.2">
+                <img src="assets/hero_bg.png" alt="Carti Texture">
+            </div>
+            <h2 class="sub-text kinetic-text" data-speed="0.8">KING VAMP / NARCISSIST</h2>
+            <div class="scroll-down">SCROLL ↓</div>
+        </section>
+
+        <!-- Section 2: Chaotic Album Gallery -->
+        <section class="chaos-gallery">
+            <h1 class="giant-text vertical-text kinetic-text" data-speed="1.2">DISCOG</h1>
+            <div class="album-item wlr" data-speed="0.6">
+                <img src="assets/wlr_cover.png" alt="Whole Lotta Red">
+                <div class="album-meta">
+                    <h3>WHOLE LOTTA RED</h3>
+                    <p>VOL. 3 /// 2020</p>
+                </div>
+            </div>
+            <div class="album-item die-lit" data-speed="0.9">
+                <img src="assets/die_lit_cover.png" alt="Die Lit">
+                <div class="album-meta">
+                    <h3>DIE LIT</h3>
+                    <p>VOL. 2 /// 2018</p>
+                </div>
+            </div>
+            <div class="marquee-strip">
+                <span class="kinetic-text">CONTROL THE MOSHPIT * THIS IS NOT POP * VAMP ANTHEM *</span>
+                <span class="kinetic-text">CONTROL THE MOSHPIT * THIS IS NOT POP * VAMP ANTHEM *</span>
+            </div>
+        </section>
+
+        <!-- Section 3: Tour/Dates -->
+        <section class="tour-manifest">
+            <h1 class="section-title kinetic-text">WORLD TOUR</h1>
+            <ul class="manifest-list">
+                <li><span class="loc">ATLANTA</span><span class="status">SOLD OUT</span></li>
+                <li><span class="loc">NEW YORK</span><span class="status">FEW LEFT</span></li>
+                <li><span class="loc">TOKYO</span><span class="status">AVAILABLE</span></li>
+                <li><span class="loc">LONDON</span><span class="status">SOLD OUT</span></li>
+            </ul>
+        </section>
+    </main>
+
+    <!-- Local Audio (Autoplay + Loop) -->
+    <audio id="bg-audio" loop autoplay>
+        <source src="assets/music/Playboi%20Carti%20-%20ALL%20RED%20(Official%20Visualizer).mp3" type="audio/mpeg">
+    </audio>
+
+    <script src="java.js?v=16"></script>
+
+    <script>
+        const audio = document.getElementById("bg-audio");
+        audio.volume = 1.0; // Max volume as requested
+
+        function tryPlay() {
+            audio.play().then(() => {
+                // Success - remove listeners to stop spamming play
+                document.removeEventListener('click', tryPlay);
+                document.removeEventListener('keydown', tryPlay);
+                document.removeEventListener('scroll', tryPlay);
+                document.removeEventListener('mousemove', tryPlay);
+            }).catch(e => {
+                console.log("Autoplay blocked, waiting for interaction.");
+            });
+        }
+
+        // Try immediately
+        tryPlay();
+
+        // Try on any interaction (brute force to ensure it plays)
+        document.addEventListener('click', tryPlay);
+        document.addEventListener('keydown', tryPlay);
+        document.addEventListener('scroll', tryPlay);
+        document.addEventListener('mousemove', tryPlay);
+    </script>
+
+</body>
+
+</html>
