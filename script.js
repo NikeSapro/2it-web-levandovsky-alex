@@ -1,13 +1,13 @@
-// Jednoduchá animace při scrollu
-window.addEventListener('scroll', function() {
-    const cards = document.querySelectorAll('.card');
-    const scrollY = window.scrollY + window.innerHeight / 1.2;
+const reveals = document.querySelectorAll(".reveal");
 
-    cards.forEach(card => {
-        if(scrollY > card.offsetTop) {
-            card.style.opacity = 1;
-            card.style.transform = 'translateY(0)';
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add("active");
         }
     });
+}, {
+    threshold: 0.2
 });
-    
+
+reveals.forEach(el => observer.observe(el));
