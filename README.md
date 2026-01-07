@@ -10,6 +10,7 @@ Cílem stránky je představit základní informace o jeho životě, hudebním s
 Stránka je moderní, responzivní a obsahuje jednoduché animace při scrollu.
 
 ## Použité technologie
+- **CHATGPT** –
 - **HTML5** – struktura stránky, nadpisy, sekce a tlačítka  
 - **CSS3** – vzhled stránky, gradienty, fonty, zaoblené karty, animace
 - **JavaScript** – jednoduchá scroll animace sekcí  
